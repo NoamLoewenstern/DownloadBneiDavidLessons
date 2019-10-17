@@ -1,5 +1,4 @@
-import { css } from "@emotion/core";
-import "styles/listLessons.css";
+import "styles/ListLessons/table.scss";
 import "styles/header.scss";
 import useAxios from "axios-hooks";
 import React, { useMemo } from "react";
@@ -8,8 +7,6 @@ import { API_URL } from "config";
 import FetchHeader from "./FetchHeader";
 import LessonsTable from "./LessonsTable";
 import queryString from "query-string";
-
-// const FileDownload = require('js-file-download');
 
 const ListLessons = props => {
   const [{ data = [], loading: fetching, error }, refetch] = useAxios(
@@ -34,15 +31,7 @@ const ListLessons = props => {
     <>
       <FetchHeader {...{ handleFetch, fetching }} />
       {fetching ? (
-        <BeatLoader
-          css={css`
-            display: block;
-            margin: auto 5px;
-          `}
-          sizeUnit={"px"}
-          size={40}
-          color="dodgerblue"
-        />
+        <BeatLoader sizeUnit={"px"} size={40} color="dodgerblue" />
       ) : (
         listLessons.length > 0 && <LessonsTable listLessons={listLessons} />
       )}

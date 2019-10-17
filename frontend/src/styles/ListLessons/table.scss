@@ -1,0 +1,23 @@
+$lighterBlue: rgb(92, 143, 253);
+
+.lessons-row td,
+.lessons-row th {
+  margin: auto;
+  vertical-align: middle;
+  color: "red";
+  background-color: transparent;
+}
+
+.lessons-row td .btn {
+  white-space: nowrap;
+  border-radius: 6px;
+}
+.lessons-row td .btn:hover,
+.lessons-row td .btn:focus {
+  color: white;
+  background-color: $lighterBlue;
+}
+
+.lessons-row td .error-msg {
+  color: white;
+}
