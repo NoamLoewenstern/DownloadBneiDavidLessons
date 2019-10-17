@@ -1,0 +1,65 @@
+$headerColor: rgb(70, 128, 255);
+$blueColorTheme: rgb(0, 95, 190);
+
+.fetch-header {
+  padding: 10px;
+  margin: 10px;
+}
+.fetch-header h2 {
+  font-size: 50px;
+  color: $headerColor;
+  margin: 20px 10px;
+}
+
+.fetch-header div {
+  position: relative;
+  padding: 5px 5px;
+  margin: 5px;
+  text-align: center;
+  display: flex;
+}
+
+.fetch-header div input[type="text"] {
+  margin: 10px 5px;
+  direction: ltr;
+  background-color: none;
+  border: 1px solid $blueColorTheme;
+  font-size: 20px;
+  width: 80%;
+  display: block;
+  padding: 1px 8px;
+  border-radius: 10px;
+  color: $blueColorTheme;
+  letter-spacing: 0.01em;
+  position: relative;
+}
+.fetch-header div input[type="text"]::placeholder {
+  color: $blueColorTheme;
+}
+.fetch-header div input[type="text"]:focus,
+.fetch-header div input[type="text"]:hover::placeholder {
+  color: $headerColor;
+}
+
+.fetch-header div button {
+  margin: 10px 5px;
+  background-color: white;
+  border: 1px solid $blueColorTheme;
+  line-height: 0;
+  white-space: nowrap;
+  font-size: 20px;
+  display: inline-block;
+  padding: 20px 15px;
+  border-radius: 10px;
+  color: $blueColorTheme;
+  letter-spacing: 0.01em;
+  position: relative;
+}
+.fetch-header div button:hover,
+.fetch-header div button:focus {
+  color: white;
+  background-color: #6cb5f1;
+}
+.error-msg {
+  color: white;
+}

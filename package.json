@@ -1,0 +1,13 @@
+{
+	"name": "BneiDavidShiurim",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"fe": "cd frontend && yarn start",
+		"be": "cd backend && python app.py"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}

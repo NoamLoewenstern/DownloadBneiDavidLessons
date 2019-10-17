@@ -1,0 +1,15 @@
+.lesson-row .btn {
+  display: block;
+  margin: auto;
+  /* background-color: #6cb5f1; */
+  background-color: cornflowerblue;
+}
+.lesson-row .btn:hover {
+  background-color: RoyalBlue;
+}
+
+.lessons-row tr td {
+  margin: auto;
+  vertical-align: middle;
+  color: "red";
+}
