@@ -3,3 +3,4 @@
 temp*
 *yarn.lock
 *build/
+*venv/
