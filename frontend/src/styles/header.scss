@@ -11,6 +11,15 @@ $blueColorTheme: rgb(0, 95, 190);
   margin: 20px 10px;
 }
 
+.fetch-header h2 a {
+  font-size: 50px;
+  color: rgb(0, 133, 66);
+  text-decoration: underline;
+}
+.fetch-header h2 a:hover {
+  color: rgb(2, 74, 146);
+}
+
 .fetch-header div {
   position: relative;
   padding: 5px 5px;
@@ -19,7 +28,7 @@ $blueColorTheme: rgb(0, 95, 190);
   display: flex;
 }
 
-.fetch-header div input[type="text"] {
+.fetch-header div input[type='text'] {
   margin: 10px 5px;
   direction: ltr;
   background-color: none;
@@ -33,11 +42,11 @@ $blueColorTheme: rgb(0, 95, 190);
   letter-spacing: 0.01em;
   position: relative;
 }
-.fetch-header div input[type="text"]::placeholder {
+.fetch-header div input[type='text']::placeholder {
   color: $blueColorTheme;
 }
-.fetch-header div input[type="text"]:focus,
-.fetch-header div input[type="text"]:hover::placeholder {
+.fetch-header div input[type='text']:focus,
+.fetch-header div input[type='text']:hover::placeholder {
   color: $lighterBlue;
 }
 
@@ -59,4 +68,13 @@ $blueColorTheme: rgb(0, 95, 190);
 .fetch-header div button:focus {
   color: white;
   background-color: $lighterBlue;
+}
+
+.fetch-header div .current-url {
+  position: relative;
+  color: blue;
+  font-size: 14px;
+  margin: auto 1px;
+  padding: 12px 5px;
+  border-radius: 5px;
 }

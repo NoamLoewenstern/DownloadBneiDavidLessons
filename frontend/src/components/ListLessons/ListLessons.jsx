@@ -26,7 +26,6 @@ const ListLessons = props => {
       url: `${API_URL.fetchVideos}?${queryArgs}`
     });
   };
-
   return (
     <>
       <FetchHeader {...{ handleFetch, fetching }} />
@@ -37,8 +36,12 @@ const ListLessons = props => {
       )}
       {error && (
         <div className="error-msg">
-          <h4>Error:</h4>
-          <h5>{JSON.stringify(error.response.data)}</h5>
+          <h4>שגיאה:</h4>
+
+          <h5>
+            {(error.response && JSON.stringify(error.response.data)) ||
+              error.message}
+          </h5>
         </div>
       )}
     </>

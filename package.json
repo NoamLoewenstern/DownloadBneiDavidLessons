@@ -1,13 +1,22 @@
 {
-	"name": "BneiDavidShiurim",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"fe": "cd frontend && yarn start",
-		"be": "cd backend && python app.py"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC"
+  "name": "bneidavid-lessons-downloader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "fe:dev": "cd frontend && yarn start",
+    "fe:build": "cd frontend && yarn build && cd .. && yarn moveBuild",
+    "fe:installDeps": "cd frontend && yarn && cd .. ",
+    "moveBuild": "rm -rf backend/build && mv frontend/build backend/build",
+    "be:dev": "cd backend && python app.py --dev",
+    "be:serve": "cd backend && python app.py",
+    "production": "yarn fe:build && yarn be:serve",
+    "deploy": "yarn fe:installDeps && yarn production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.0.0"
+  }
 }

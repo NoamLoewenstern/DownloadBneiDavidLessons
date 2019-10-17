@@ -2,3 +2,5 @@
 *.pyc
 temp*
 *yarn.lock
+*build/
+*venv/
