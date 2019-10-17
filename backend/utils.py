@@ -38,3 +38,10 @@ def iter_background_images():
     while True:
         yield BACKGROUND_IMAGES[i % len(BACKGROUND_IMAGES)]
         i += 1
+
+
+def jsonified(data):
+    try:
+        return loads(data)
+    except:
+        return ''
