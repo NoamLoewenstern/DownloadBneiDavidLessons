@@ -18,7 +18,7 @@ const DownloadButton = (
         disabled={downloading}
         onClick={() => downloadFile(link, newFileName)}
       >
-        <i class="fa fa-download"></i> הורדה
+        <i className="fa fa-download"></i> הורדה
       </button>
       {downloading && (
         <>
@@ -55,7 +55,6 @@ const LessonRow = ({ lesson, index }) => {
         {lesson.length}
       </td>
       <td>
-        {/* <a href={lesson.videoLink}>Video</a> */}
         {DownloadButton(
           lesson,
           lesson.videoLink,
@@ -66,7 +65,6 @@ const LessonRow = ({ lesson, index }) => {
         )}
       </td>
       <td>
-        {/* <a href={lesson.audioLink}>Audio</a> */}
         {DownloadButton(
           lesson,
           lesson.audioLink,
