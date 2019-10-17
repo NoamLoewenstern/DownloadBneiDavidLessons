@@ -2,6 +2,7 @@ import requests
 import re
 from threading import Thread
 from config import BASE_BNEI_URL, BACKGROUND_IMAGES_LINKS
+from json import loads
 global BACKGROUND_IMAGES
 BACKGROUND_IMAGES = []
 
@@ -32,9 +33,11 @@ def init_background_images(join_thread=False):
 def iter_background_images():
     global BACKGROUND_IMAGES
     if len(BACKGROUND_IMAGES) < 1:
+        image_link = BACKGROUND_IMAGES_LINKS[0]
+        firstImage = requests.get(image_link)
         init_background_images()
-        yield None
-    i = 0
+        yield firstImage
+    i = 1
     while True:
         yield BACKGROUND_IMAGES[i % len(BACKGROUND_IMAGES)]
         i += 1
