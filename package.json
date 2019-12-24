@@ -4,19 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "yarn fe:build",
     "fe:dev": "cd frontend && yarn start",
-    "fe:build": "cd frontend && yarn build && cd .. && yarn moveBuild",
-    "fe:installDeps": "cd frontend && yarn && cd .. ",
-    "moveBuild": "rm -rf backend/build && mv frontend/build backend/build",
-    "be:dev": "cd backend && python app.py --dev",
-    "be:serve": "cd backend && python app.py",
+    "fe:build": "cd frontend && yarn build",
+    "fe:installDeps": "cd frontend && yarn install",
+    "be:serve": "python backend/app.py",
+    "be:dev": "yarn be:serve --dev",
     "production": "yarn fe:build && yarn be:serve",
     "deploy": "yarn fe:installDeps && yarn production"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "dev-dependencies": {
     "concurrently": "^5.0.0"
   }
 }

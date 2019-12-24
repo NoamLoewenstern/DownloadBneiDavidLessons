@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+flake8 = "*"
+pylint = "*"
+ipykernel = "*"
+
+[packages]
+requests = "*"
+flask-cors = "*"
+flask = "*"
+beautifulsoup4 = "*"
+
+[requires]
+python_version = "3.7"
