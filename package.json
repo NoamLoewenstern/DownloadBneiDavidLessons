@@ -1,19 +1,24 @@
 {
   "name": "bneidavid-lessons-downloader",
   "version": "1.0.0",
-  "description": "",
+  "description": "Enables to download multiple lessons from the official BneiDavid website concurrently and in Hebrew.",
   "main": "index.js",
   "scripts": {
+    "start": "yarn be:serve",
     "build": "yarn fe:build",
     "fe:dev": "cd frontend && yarn start",
     "fe:build": "cd frontend && yarn build",
-    "fe:installDeps": "cd frontend && yarn install",
     "be:serve": "python backend/app.py",
     "be:dev": "yarn be:serve --dev",
+    "fe:installDeps": "cd frontend && yarn install",
     "production": "yarn fe:build && yarn be:serve",
     "deploy": "yarn fe:installDeps && yarn production"
   },
-  "keywords": [],
+  "keywords": [
+    "BneiDavid",
+    "Download",
+    "Lessons"
+  ],
   "author": "",
   "license": "ISC",
   "dev-dependencies": {
