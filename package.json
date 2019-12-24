@@ -20,8 +20,5 @@
     "Lessons"
   ],
   "author": "",
-  "license": "ISC",
-  "dev-dependencies": {
-    "concurrently": "^5.0.0"
-  }
+  "license": "ISC"
 }
