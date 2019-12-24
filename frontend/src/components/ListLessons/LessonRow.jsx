@@ -1,5 +1,5 @@
-import React from "react";
-import { useDownloadBneiDavidFile } from "components/custom";
+import React from 'react';
+import { useDownloadBneiDavidFile } from 'components/custom';
 
 const DownloadButton = (
   lesson,
@@ -7,22 +7,22 @@ const DownloadButton = (
   ext,
   downloading,
   downloadFile,
-  error
+  error,
 ) => {
   const newFileName = `${lesson.rabi} - ${lesson.name}.${ext}`;
   return (
     <>
       <button
-        className="btn lesson-row"
-        style={{ color: "white" }}
+        className='btn lesson-row'
+        style={{ color: 'white' }}
         disabled={downloading}
         onClick={() => downloadFile(link, newFileName)}
       >
-        <i className="fa fa-download"></i> הורדה
+        <i className='fa fa-download'></i> הורדה
       </button>
       {downloading && (
         <>
-          <i className="fa fa-refresh fa-spin" style={{ marginRight: "3px" }} />
+          <i className='fa fa-refresh fa-spin' style={{ marginRight: '3px' }} />
         </>
       )}
       {/* {error && <h4>error</h4>} */}
@@ -33,46 +33,48 @@ const DownloadButton = (
 const LessonRow = ({ lesson, index }) => {
   const [
     { downloading: downloadingVideo, errorVideo },
-    downloadAudioVideoFile
+    downloadAudioVideoFile,
   ] = useDownloadBneiDavidFile();
   const [
     { downloading: downloadingAudio, errorAudio },
-    downloadAudioFile
+    downloadAudioFile,
   ] = useDownloadBneiDavidFile();
 
   return (
-    <tr className="lessons-row" key={index}>
-      <th scope="row">{index + 1}</th>
+    <tr className='lessons-row' key={index}>
+      <th scope='row'>{index + 1}</th>
       <td>{lesson.subject}</td>
 
-      <td style={{ verticalAlign: "middle", whiteSpace: "nowrap" }}>
+      <td style={{ verticalAlign: 'middle', whiteSpace: 'nowrap' }}>
         {lesson.rabi}
       </td>
       <td>{lesson.name}</td>
       <td>{lesson.serieName}</td>
       <td>{lesson.date}</td>
-      <td style={{ verticalAlign: "middle", whiteSpace: "nowrap" }}>
+      <td style={{ verticalAlign: 'middle', whiteSpace: 'nowrap' }}>
         {lesson.length}
       </td>
       <td>
-        {DownloadButton(
-          lesson,
-          lesson.videoLink,
-          "mp4",
-          downloadingVideo,
-          downloadAudioVideoFile,
-          errorVideo
-        )}
+        {lesson.videoLink &&
+          DownloadButton(
+            lesson,
+            lesson.videoLink,
+            'mp4',
+            downloadingVideo,
+            downloadAudioVideoFile,
+            errorVideo,
+          )}
       </td>
       <td>
-        {DownloadButton(
-          lesson,
-          lesson.audioLink,
-          "mp3",
-          downloadingAudio,
-          downloadAudioFile,
-          errorAudio
-        )}
+        {lesson.audioLink &&
+          DownloadButton(
+            lesson,
+            lesson.audioLink,
+            'mp3',
+            downloadingAudio,
+            downloadAudioFile,
+            errorAudio,
+          )}
       </td>
     </tr>
   );

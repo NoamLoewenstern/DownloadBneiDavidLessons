@@ -4,7 +4,7 @@ $lighterBlue: rgb(92, 143, 253);
 .lessons-row th {
   margin: auto;
   vertical-align: middle;
-  color: "red";
+  color: 'red';
   background-color: transparent;
 }
 
@@ -20,4 +20,6 @@ $lighterBlue: rgb(92, 143, 253);
 
 .error-msg {
   color: red;
+  direction: ltr;
+  text-align: left;
 }

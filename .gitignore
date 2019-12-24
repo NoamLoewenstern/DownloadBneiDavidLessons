@@ -8,3 +8,4 @@ backend/cache_responses/*
 Untitled.ipynb
 .ipynb_checkpoints/
 .vscode/
+__pycache__
