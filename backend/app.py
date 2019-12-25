@@ -63,9 +63,7 @@ def main():
     app.run(host="0.0.0.0", port=5000, threaded=True, debug=debug)
 
 
-if __name__ == "__main__":
-    init_logging()
-    main()
+init_logging()
 
-elif __name__ == "app":
-    init_logging()
+if __name__ == "__main__":
+    main()
