@@ -16,7 +16,7 @@ from routes.api import api_routes
 
 
 SCRIPT_DIR = (dirname(realpath(__file__)))
-BUILD_PATH = realpath(join(SCRIPT_DIR, 'frontend', 'build'))
+BUILD_PATH = realpath(join(SCRIPT_DIR, '..', 'frontend', 'build'))
 print(f'BUILD_PATH: {BUILD_PATH}')
 
 app = Flask(
