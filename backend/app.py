@@ -12,8 +12,7 @@ from flask import (
     stream_with_context,
 )
 from flask_cors import CORS
-from backend.routes.api import api_routes
-from backend.routes.helpers import log_called_func
+from routes.api import api_routes
 
 
 SCRIPT_DIR = (dirname(realpath(__file__)))
@@ -25,12 +24,8 @@ app = Flask(
     static_folder=join(BUILD_PATH, 'static'),
     template_folder=BUILD_PATH,
 )
-
-
 app.register_blueprint(api_routes)
 CORS(app)
-
-# send_from_directory = log_called_func(send_from_directory, "send_from_directory")
 
 
 @app.route("/")

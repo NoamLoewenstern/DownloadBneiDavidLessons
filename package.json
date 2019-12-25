@@ -21,5 +21,8 @@
     "Lessons"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "serve": "^11.2.0"
+  }
 }

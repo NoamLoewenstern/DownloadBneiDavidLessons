@@ -1,10 +1,9 @@
-*node_modules/
+node_modules
 *.pyc
 temp*
-*yarn.lock
+yarn-error.log
 *build/
-*venv/
 backend/cache_responses/*.json
 Untitled.ipynb
-.ipynb_checkpoints/
+*.ipynb*
 __pycache__
