@@ -10,6 +10,7 @@
     "fe:build": "cd frontend && yarn build",
     "be:serve": "python backend/app.py",
     "be:dev": "yarn be:serve --dev",
+    "be:installDeps": "pipenv install",
     "fe:installDeps": "cd frontend && yarn install",
     "production": "yarn fe:build && yarn be:serve",
     "deploy": "yarn fe:installDeps && yarn production"

@@ -1,6 +1,7 @@
 {
     "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": false,
+    "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
-    "python.linting.pep8Enabled": true
+    "python.linting.pycodestyleEnabled": false,
+    "python.pythonPath": "C:\\Users\\noaml\\.virtualenvs\\DownloadBneiDavidLessons-hAMRf3Nk\\Scripts\\python.exe"
 }

@@ -5,8 +5,6 @@ verify_ssl = true
 
 [dev-packages]
 flake8 = "*"
-pylint = "*"
-ipykernel = "*"
 
 [packages]
 requests = "*"

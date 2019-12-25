@@ -2,14 +2,19 @@ import React, { useState, useEffect } from 'react';
 import useLocalStorage from 'react-use-localstorage';
 import { mainPage } from 'config';
 import validUrl from 'valid-url';
+
 const FetchHeader = ({ handleFetch, fetching }) => {
   const [urlLocalStorage, setUrlLocalStorage] = useLocalStorage('url', '');
+  console.log('urlLocalStorage: ', urlLocalStorage);
   const [url, setUrl] = useState(urlLocalStorage);
+  console.log('url: ', url);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    handleFetch(urlLocalStorage || mainPage);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    // handleFetch(urlLocalStorage || mainPage);
+    console.log({ urlLocalStorage, mainPage });
+  }, [handleFetch, urlLocalStorage]);
+
   const isValidUrl = url => {
     let errMsg = '';
     if (!url) {

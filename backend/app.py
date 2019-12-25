@@ -1,6 +1,6 @@
 import logging
 import sys
-from os.path import join
+from os.path import join, realpath, dirname, isfile
 from flask import (
     Flask,
     render_template,
@@ -13,17 +13,24 @@ from flask import (
 )
 from flask_cors import CORS
 from routes.api import api_routes
+from routes.helpers import log_called_func
 
+
+SCRIPT_DIR = (dirname(realpath(__file__)))
+BUILD_PATH = realpath(join(SCRIPT_DIR, '..', 'frontend', 'build'))
+print(f'BUILD_PATH: {BUILD_PATH}')
 
 app = Flask(
     __name__,
-    static_folder="../frontend/build/static",
-    template_folder="../frontend/build",
+    static_folder=join(BUILD_PATH, 'static'),
+    template_folder=BUILD_PATH,
 )
-CORS(app)
 
 
 app.register_blueprint(api_routes)
+CORS(app)
+
+send_from_directory = log_called_func(send_from_directory, "send_from_directory")
 
 
 @app.route("/")
@@ -31,15 +38,17 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/", defaults={"path": ""})
-@app.route("/<path:path>")
-def catch_all(path):
-    return send_from_directory("build", path)
+@app.route("/", defaults={"filename": ""})
+@app.route("/<string:filename>")
+def catch_all(filename):
+    if not isfile(join(BUILD_PATH, filename)):
+        return not_found(None)
+    return send_from_directory(BUILD_PATH, filename)
 
 
 @app.errorhandler(404)
 def not_found(e):
-    return send_from_directory(join("build", "handlers"), "404.html")
+    return send_from_directory(join(BUILD_PATH, "handlers"), "404.html")
 
 
 def init_logging():
@@ -56,9 +65,12 @@ def init_logging():
 
 def main():
     debug = "--dev" in sys.argv
-    init_logging()
-    app.run(host="127.0.0.1", port=8000, debug=debug)
+    app.run(host="0.0.0.0", port=5000, threaded=True, debug=debug)
 
 
 if __name__ == "__main__":
+    init_logging()
     main()
+
+elif __name__ == "app":
+    init_logging()
