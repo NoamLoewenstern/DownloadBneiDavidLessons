@@ -8,7 +8,7 @@
     "build": "yarn fe:build",
     "fe:dev": "cd frontend && yarn start",
     "fe:build": "cd frontend && yarn build",
-    "be:serve": "python backend/app.py",
+    "be:serve": "flask run",
     "be:dev": "yarn be:serve --dev",
     "be:installDeps": "pipenv install",
     "fe:installDeps": "cd frontend && yarn install",

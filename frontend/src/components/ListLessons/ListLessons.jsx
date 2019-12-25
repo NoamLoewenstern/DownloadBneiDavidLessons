@@ -11,9 +11,12 @@ import LessonsTable from './LessonsTable';
 import { getAPIReqEncodedUrl, genErrorMsg } from './helpers';
 
 const ListLessons = props => {
-  const [urlLocalStorage, setUrlLocalStorage] = useLocalStorage('url', '');
+  const [urlLocalStorage, setUrlLocalStorage] = useLocalStorage(
+    'url',
+    mainPage,
+  );
   const [{ data = [], loading: fetching, error }, fetch] = useAxios(
-    getAPIReqEncodedUrl(urlLocalStorage || mainPage),
+    getAPIReqEncodedUrl(urlLocalStorage),
   );
 
   const listLessons = useMemo(

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import useLocalStorage from 'react-use-localstorage';
 import validUrl from 'valid-url';
+import { mainPage } from 'config';
 
 const FetchHeader = ({ handleFetch, fetching }) => {
-  const [url, setUrl] = useLocalStorage('url', '');
+  const [url, setUrl] = useLocalStorage('url', mainPage);
 
   const isValidUrl = url => {
     let errMsg = '';
