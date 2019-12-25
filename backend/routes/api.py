@@ -29,7 +29,7 @@ def fetch_lessons_from_page():
     if DBG:
         return jsonify(TEMP_JSON_RESULT_LIST_LESSONS)
 
-    logging.info(f"req -> url : {url}")
+    logging.info(f"req: {url}")
     success, list_lessons = BDRequests.get_list_lessons(url)
     if not success:
         return list_lessons
@@ -37,7 +37,7 @@ def fetch_lessons_from_page():
         success, list_lessons = BDRequests.get_list_lessons(DEFAULT_LESSONS_PAGE)
         if not success:
             return list_lessons
-    logging.info(f"[Response-Jsonify] return {len(list_lessons)} lessons...")
+    logging.info(f"returned {len(list_lessons)} lessons.")
     return jsonify(list_lessons)
 
 
@@ -50,7 +50,7 @@ def downloadFile():
 
     url = request.args.get("url")
     if not url:
-        logging.error(f"Invalid Format. url -> {url}")
+        logging.error(f"Invalid Format. url: {url}")
         return mandatory_query_args_error_response("url")
 
     if not url_exists(url):

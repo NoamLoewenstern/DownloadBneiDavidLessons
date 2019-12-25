@@ -4,16 +4,7 @@ import { mainPage } from 'config';
 import validUrl from 'valid-url';
 
 const FetchHeader = ({ handleFetch, fetching }) => {
-  const [urlLocalStorage, setUrlLocalStorage] = useLocalStorage('url', '');
-  console.log('urlLocalStorage: ', urlLocalStorage);
-  const [url, setUrl] = useState(urlLocalStorage);
-  console.log('url: ', url);
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    // handleFetch(urlLocalStorage || mainPage);
-    console.log({ urlLocalStorage, mainPage });
-  }, [handleFetch, urlLocalStorage]);
+  const [url, setUrl] = useLocalStorage('url', '');
 
   const isValidUrl = url => {
     let errMsg = '';
@@ -31,14 +22,12 @@ const FetchHeader = ({ handleFetch, fetching }) => {
 
   const handleOnClickShowLessons = () => {
     if (isValidUrl(url)) {
-      setUrlLocalStorage(url);
       handleFetch(url);
     }
   };
 
   const handleOnClickCurrentUrl = async () => {
     if (!isValidUrl(url)) return false;
-    setUrlLocalStorage(url);
     window.open(url, '_blank');
   };
 

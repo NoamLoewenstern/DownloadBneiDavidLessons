@@ -1,5 +1,5 @@
-$lighterBlue: rgb(70, 128, 255);
-$blueColorTheme: rgb(0, 95, 190);
+$lighterBlue: rgb(36, 105, 252);
+$blueColorTheme: rgb(2, 78, 153);
 
 .fetch-header {
   padding: 10px;
@@ -9,6 +9,7 @@ $blueColorTheme: rgb(0, 95, 190);
   font-size: 50px;
   color: $lighterBlue;
   margin: 20px 10px;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 
 .fetch-header h2 a {
@@ -31,7 +32,7 @@ $blueColorTheme: rgb(0, 95, 190);
 .fetch-header div input[type='text'] {
   margin: 10px 5px;
   direction: ltr;
-  background-color: none;
+  background-color: #f3f9ff;
   border: 1px solid $blueColorTheme;
   font-size: 20px;
   width: 80%;
@@ -52,7 +53,7 @@ $blueColorTheme: rgb(0, 95, 190);
 
 .fetch-header div button {
   margin: 10px 5px;
-  background-color: white;
+  background-color: #f3f9ff;
   border: 1px solid $blueColorTheme;
   line-height: 0;
   white-space: nowrap;
@@ -66,7 +67,7 @@ $blueColorTheme: rgb(0, 95, 190);
 }
 .fetch-header div button:hover,
 .fetch-header div button:focus {
-  color: white;
+  color: #f3f9ff;
   background-color: $lighterBlue;
 }
 

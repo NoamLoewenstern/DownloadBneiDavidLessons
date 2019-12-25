@@ -30,7 +30,7 @@ app = Flask(
 app.register_blueprint(api_routes)
 CORS(app)
 
-send_from_directory = log_called_func(send_from_directory, "send_from_directory")
+# send_from_directory = log_called_func(send_from_directory, "send_from_directory")
 
 
 @app.route("/")

@@ -5,20 +5,16 @@ import React, { useMemo, useCallback } from 'react';
 import BeatLoader from 'react-spinners/BeatLoader';
 import useLocalStorage from 'react-use-localstorage';
 
-import { API_URL } from 'config';
 import FetchHeader from './FetchHeader';
 import LessonsTable from './LessonsTable';
-import queryString from 'query-string';
+import { getAPIReqEncodedUrl, genErrorMsg } from './helpers';
 
 const ListLessons = props => {
   const [urlLocalStorage, setUrlLocalStorage] = useLocalStorage('url', '');
-
   const [{ data = [], loading: fetching, error }, fetch] = useAxios(
-    { method: 'GET', url: urlLocalStorage },
-    {
-      manual: false,
-    },
+    getAPIReqEncodedUrl(urlLocalStorage),
   );
+
   const listLessons = useMemo(
     () => (Array.isArray(data) ? Array.from(data) : []),
     [data],
@@ -26,40 +22,12 @@ const ListLessons = props => {
 
   const handleFetch = useCallback(
     bneiDavidFileUrl => {
-      const queryArgs = queryString.stringify({ url: bneiDavidFileUrl });
-      console.log(`calling 'fetch' on ${bneiDavidFileUrl}`);
-      setUrlLocalStorage(urlLocalStorage);
-      fetch({
-        url: `${API_URL.fetchVideos}?${queryArgs}`,
-      });
+      const apiReqUrl = getAPIReqEncodedUrl(bneiDavidFileUrl);
+      setUrlLocalStorage(bneiDavidFileUrl);
+      fetch(apiReqUrl);
     },
-    [fetch, urlLocalStorage, setUrlLocalStorage],
+    [fetch, setUrlLocalStorage],
   );
-  const errorMsg = '';
-  // useMemo(() => {
-  //   if (!error) return '';
-  //   const { response, message: errMessage } = error || {};
-  //   const { status, statusText, data: errData } = response || {};
-  //   const innerErrMsg =
-  //     status === 500 &&
-  //     statusText === 'INTERNAL SERVER ERROR' &&
-  //     typeof errData === 'string' &&
-  //     errData.startsWith('<!DOCTYPE')
-  //       ? errData
-  //       : (errData && JSON.stringify(errData)) || errMessage || '';
-  //   return (
-  //     error && (
-  //       <>
-  //         <h4>שגיאה:</h4>
-  //         <div
-  //           className='error-msg'
-  //           style={{ backgroundColor: '#2d2d2d' }}
-  //           dangerouslySetInnerHTML={{ __html: innerErrMsg }}
-  //         />
-  //       </>
-  //     )
-  //   );
-  // }, [error]);
 
   return (
     <>
@@ -69,7 +37,7 @@ const ListLessons = props => {
       ) : (
         listLessons.length > 0 && <LessonsTable listLessons={listLessons} />
       )}
-      {errorMsg}
+      {genErrorMsg(error)}
     </>
   );
 };
