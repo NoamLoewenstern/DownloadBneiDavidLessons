@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import useLocalStorage from 'react-use-localstorage';
-import { mainPage } from 'config';
 import validUrl from 'valid-url';
 
 const FetchHeader = ({ handleFetch, fetching }) => {

@@ -12,12 +12,12 @@ from flask import (
     stream_with_context,
 )
 from flask_cors import CORS
-from routes.api import api_routes
-from routes.helpers import log_called_func
+from backend.routes.api import api_routes
+from backend.routes.helpers import log_called_func
 
 
 SCRIPT_DIR = (dirname(realpath(__file__)))
-BUILD_PATH = realpath(join(SCRIPT_DIR, '..', 'frontend', 'build'))
+BUILD_PATH = realpath(join(SCRIPT_DIR, 'frontend', 'build'))
 print(f'BUILD_PATH: {BUILD_PATH}')
 
 app = Flask(
