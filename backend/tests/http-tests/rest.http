@@ -1,8 +1,15 @@
-POST http://localhost:8000/downloadFile
+POST http://localhost:5000/downloadFile
 content-type: application/json
 
 {
-    # "url": "http://bneidavidmp3.media-line.co.il/bneidavid/vf/audio/kas/harav_kok/orot_savav_B_5778/OrotHatchiya/kas_orot55_5779_OrotHatchiya03.mp3"
     "url": "http://bneidavidmp3.media-line.co.il/bneidavid/vf/audio/kas/moshar/hafetz_haim/smirat_hlashon/5779/kas_shmiratHalashon05_5779.mp3"
+}
+
+###
+POST http://localhost:5000/downloadFile
+content-type: application/json
+
+{
+    "url": "http://bneidavidmp3.media-line.co.il/bneidavid/vf/audio/kas/harav_kok/orot_savav_B_5778/OrotHatchiya/kas_orot55_5779_OrotHatchiya03.mp3"
 }
 

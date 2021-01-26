@@ -1,13 +1,16 @@
-
 import logging
 from flask import request, jsonify
 import requests
 
 
 def mandatory_query_args_error_response(mandatory_keys, **kargs):
-    logging.error("Error. Invalid Format. data -> {}".format(request.data))
-    response = jsonify(status="Error", data=request.data,
-                       msg="mandatory query keys: %s" % mandatory_keys, **kargs)
+    logging.error(f"Invalid Query argements. Missing Keys: {mandatory_keys}")
+    response = jsonify(
+        status="Error",
+        data=str(request.data, "utf8"),
+        msg=f"mandatory query keys: {mandatory_keys}",
+        # **kargs,
+    )
     response.status_code = 400
     return response
 

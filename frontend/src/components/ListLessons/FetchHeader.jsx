@@ -1,21 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { mainPage } from 'config';
+import useLocalStorage from 'react-use-localstorage';
 import validUrl from 'valid-url';
+import { mainPage } from 'config';
 
 const FetchHeader = ({ handleFetch, fetching }) => {
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useLocalStorage('url', mainPage);
 
-  useEffect(() => {
-    handleFetch(mainPage);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  const handleOnClickCurrentUrl = async () => {
-    if (validUrl.isUri(url)) {
-      window.open(url, '_blank');
-    } else {
-      alert(`'${url}' כתובת לא קיימת`);
+  const isValidUrl = url => {
+    let errMsg = '';
+    if (!url) {
+      errMsg = `כתובת ריקה`;
+    } else if (!validUrl.isWebUri(url)) {
+      errMsg = `'${url}' כתובת לא הגיונית`;
+    }
+    if (errMsg) {
+      alert(errMsg);
+      return false;
+    }
+    return true;
+  };
+
+  const handleOnClickShowLessons = () => {
+    if (isValidUrl(url)) {
+      handleFetch(url);
     }
   };
+
+  const handleOnClickCurrentUrl = async () => {
+    if (!isValidUrl(url)) return false;
+    window.open(url, '_blank');
+  };
+
   return (
     <div className='fetch-header'>
       <h2>
@@ -35,8 +50,9 @@ const FetchHeader = ({ handleFetch, fetching }) => {
           required
           onChange={e => setUrl(e.target.value)}
           placeholder='URL'
+          onKeyDown={e => e.key === 'Enter' && handleOnClickShowLessons()}
         />
-        <button onClick={() => handleFetch(url)} disabled={fetching}>
+        <button onClick={handleOnClickShowLessons} disabled={fetching}>
           הצג שיעורים
         </button>
         {url && (
@@ -47,7 +63,7 @@ const FetchHeader = ({ handleFetch, fetching }) => {
             target='_blank'
             onClick={handleOnClickCurrentUrl}
           >
-            נוכחי
+            פתח נוכחי
           </button>
         )}
       </div>

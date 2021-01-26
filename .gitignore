@@ -4,3 +4,7 @@ temp*
 *yarn.lock
 *build/
 *venv/
+backend/cache_responses/*.json
+Untitled.ipynb
+.ipynb_checkpoints/
+__pycache__
